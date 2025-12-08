@@ -1,0 +1,21 @@
+services:
+  redis:
+    image: redis:alpine
+    restart: always
+    ports:
+      - "6379:6379"
+  postgres:
+    image: postgres:17
+    container_name: postgres-ludin
+    environment:
+      POSTGRES_DB: ludin
+      POSTGRES_USER: ludin
+      POSTGRES_PASSWORD: ludin
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    restart: always
+
+volumes:
+  postgres_data:

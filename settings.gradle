@@ -1,0 +1,18 @@
+pluginManagement {
+    // 1. 플러그인을 찾을 저장소 지정 (필수)
+    repositories {
+        gradlePluginPortal()
+    }
+
+    // 2. 플러그인 버전 지정 (선택적)
+    // build.gradle에서 버전 명시를 생략하고 싶을 때 사용
+    resolutionStrategy {
+        eachPlugin {
+            if (requested.id.id == 'org.springframework.boot') {
+                useVersion('3.5.3')
+            }
+        }
+    }
+}
+
+rootProject.name = 'ajik'
