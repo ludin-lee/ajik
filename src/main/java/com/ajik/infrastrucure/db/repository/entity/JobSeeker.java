@@ -2,13 +2,12 @@ package com.ajik.infrastrucure.db.repository.entity;
 
 import jakarta.persistence.*;
 import org.hibernate.annotations.Comment;
-import org.hibernate.annotations.SQLDelete;
 
 @Entity
-@Table(name = "company_admin")
-@SQLDelete(sql = "UPDATE company_admin SET deleted_at = now() WHERE id = ?")
-@Comment("채용담당자")
-public class CompanyAdmin  extends BaseEntity{
+@Table(name = "job_seeker")
+@Comment("구직자")
+public class JobSeeker {
+
     @Comment("ID")
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -30,12 +29,7 @@ public class CompanyAdmin  extends BaseEntity{
     @Column(name = "phone_number" , nullable = false)
     private String phoneNumber;
 
-
     @Comment("활성화 여부")
     @Column(name = "is_active" , nullable = false)
     private boolean isActive;
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "company_id")
-    private Company company;
 }
